@@ -12,4 +12,17 @@ interface api {
         @Query("page") page: Int
     ): Call<GetMoviesResponse>
 
+    @GET("movie/top_rated")
+    fun getTopRatedMovies(
+        @Query("api_key") apiKey: String = "af2a8bb4063800e504e77808e4a12bb9",
+        @Query("page") page: Int
+    ): Call<GetMoviesResponse>
+
+    @GET("movie/upcoming")
+    fun getUpcomingMovies(
+        @Query("api_key") apiKey: String = "af2a8bb4063800e504e77808e4a12bb9",
+        @Query("page") page: Int
+    ): Call<GetMoviesResponse>
+
 }
+
