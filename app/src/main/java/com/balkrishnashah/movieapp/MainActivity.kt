@@ -80,12 +80,6 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    private fun onPopularMoviesFetched(movies: List<Movie>) {
-        Log.d("MainActivity", "Movies: $movies")
-        popularMoviesAdapter.appendMovies(movies)
-        attachPopularMoviesOnScrollListener()
-
-    }
     private fun getTopRatedMovies() {
         MoviesRepository.getTopRatedMovies(
             topRatedMoviesPage,
@@ -93,6 +87,7 @@ class MainActivity : AppCompatActivity() {
             ::onError
         )
     }
+
     private fun getUpcomingMovies() {
         MoviesRepository.getUpcomingMovies(
             upcomingMoviesPage,
@@ -100,6 +95,15 @@ class MainActivity : AppCompatActivity() {
             ::onError
         )
     }
+
+    private fun onPopularMoviesFetched(movies: List<Movie>) {
+        Log.d("MainActivity", "Movies: $movies")
+        popularMoviesAdapter.appendMovies(movies)
+        attachPopularMoviesOnScrollListener()
+
+    }
+
+
     private fun onError() {
         Toast.makeText(this, getString(R.string.error_fetch_movies), Toast.LENGTH_SHORT).show()
     }
